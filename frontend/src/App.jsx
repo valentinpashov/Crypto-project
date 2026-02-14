@@ -17,9 +17,6 @@ function App() {
           <h1 className="text-3xl font-black text-blue-500 tracking-tighter">
             CRYPTO<span className="text-white">TRACKER</span>
           </h1>
-          <div className="bg-blue-500/10 border border-blue-500/20 px-4 py-1 rounded-full text-blue-400 text-sm font-bold">
-            Live from Port 8080
-          </div>
         </header>
 
         <div className="grid gap-4">
