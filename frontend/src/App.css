@@ -1,42 +1,95 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
+.dashboard-container {
+  min-height: 100vh;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-wrapper {
+  width: 100%;
+  max-width: 800px;
+}
+
+.header-title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #3b82f6; 
+  letter-spacing: -0.05em;
+  margin-bottom: 2.5rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.header-title span {
+  color: white;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.crypto-grid {
+  display: grid;
+  gap: 1rem;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.crypto-card {
+  background-color: rgba(30, 41, 59, 0.5); 
+  border: 1px solid #334155;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
 }
 
-.card {
-  padding: 2em;
+.crypto-card:hover {
+  border-color: #3b82f6;
+  transform: translateY(-2px);
 }
 
-.read-the-docs {
-  color: #888;
+.coin-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.coin-icon {
+  width: 40px;
+  height: 40px;
+  background-color: #2563eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.coin-name {
+  font-weight: bold;
+  font-size: 1.125rem;
+  margin: 0;
+}
+
+.coin-symbol {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.price-section {
+  text-align: right;
+}
+
+.price-text {
+  font-size: 1.5rem;
+  font-family: monospace;
+  font-weight: bold;
+  color: #4ade80; 
+  margin: 0;
+}
+
+.timestamp {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0;
 }
