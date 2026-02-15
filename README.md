@@ -1,4 +1,4 @@
-# 🚀 CryptoTracker Full-Stack Application
+# CryptoTracker Full-Stack Application
 
 A comprehensive full-stack solution for monitoring real-time cryptocurrency market data. This project integrates a robust **Java Spring Boot** backend with a high-performance **React** frontend to deliver live price updates for the top market assets.
 
@@ -36,4 +36,23 @@ MyCryptoProject/
 │   ├── src/           
 │   └── package.json   
 └── README.md          
+```
+
+## 🛠️ Installation & Setup
+1. Database Configuration
+Create a PostgreSQL database named crypto_db.
+```
+spring.datasource.url=jdbc:postgresql://localhost:5432/crypto_db
+spring.datasource.username=your_username
+spring.datasource.password=your_password
+```
+2. Launching the Application
+ 
+Backend: Open the /backend folder in IntelliJ and run BackendApplication.java.
+
+Frontend:
+```
+cd frontend
+npm install
+npm run dev
 ```
