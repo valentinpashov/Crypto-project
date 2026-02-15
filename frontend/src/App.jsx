@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import NewsTicker from './components/NewsTicker'; 
 import './App.css';
 
 function App() {
@@ -16,7 +17,6 @@ function App() {
           for (const item of dataReversed) {
             const symbol = item.asset.symbol;
             
-            // Check if we've already added a coin with this symbol
             if (!seenSymbols.has(symbol)) {
               seenSymbols.add(symbol);
               uniqueCoins.push(item);
@@ -29,7 +29,7 @@ function App() {
 
           setPrices(sortedByOriginalOrder);
         })
-        .catch(err => console.error("Грешка при извличане на данни:", err));
+        .catch(err => console.error("Грешка при връзка с бекенда:", err));
     };
 
     fetchData();
@@ -42,15 +42,12 @@ function App() {
 
   return (
     <div className="dashboard-container">
+      <NewsTicker /> 
+      
       <div className="content-wrapper">
         <header>
-          <h1 className="header-title">
-            CRYPTO<span>TRACKER</span>
-          </h1>
-          <div className="update-status">
-            <span className="pulse-dot"></span>
-            Live Updates (10s)
-          </div>
+          <h1 className="header-title"> CRYPTO<span>TRACKER</span> </h1>
+          <div className="update-status"> <span className="pulse-dot"></span> Live Updates (10s)</div>
         </header>
 
         <div className="crypto-grid">
@@ -67,12 +64,8 @@ function App() {
               </div>
               
               <div className="price-section">
-                <p className="price-text">
-                  ${coin.price.toLocaleString(undefined, { minimumFractionDigits: 2 })}
-                </p>
-                <p className="timestamp">
-                  Last Update: {new Date(coin.timestamp).toLocaleTimeString()}
-                </p>
+                <p className="price-text"> ${coin.price.toLocaleString(undefined, { minimumFractionDigits: 2 })} </p>
+                <p className="timestamp"> Last Update: {new Date(coin.timestamp).toLocaleTimeString()} </p>
               </div>
             </div>
           ))}
