@@ -1,10 +1,11 @@
 .dashboard-container {
   min-height: 100vh;
-  padding: 3rem 1rem;
+  padding: 100px 1rem 3rem 1rem; 
   display: flex;
   flex-direction: column;
   align-items: center;
   background: radial-gradient(circle at top center, #1e293b 0%, #0f172a 100%);
+  color: white;
 }
 
 .content-wrapper {
@@ -83,7 +84,7 @@ header {
 .crypto-card:hover {
   background: rgba(30, 41, 59, 0.9);
   border-color: rgba(59, 130, 246, 0.5);
-  transform: translateY(-4px) scale(1.01);
+  transform: translateY(-4px);
   box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
 }
 
@@ -103,53 +104,30 @@ header {
   justify-content: center;
   font-weight: 800;
   font-size: 1.25rem;
-  color: white;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
 .coin-name {
   font-weight: 700;
   font-size: 1.1rem;
   margin: 0;
-  color: #f8fafc;
 }
 
 .coin-symbol {
   color: #64748b;
   font-size: 0.85rem;
-  font-weight: 600;
   text-transform: uppercase;
-  margin-top: 2px;
-}
-
-.price-section {
-  text-align: right;
 }
 
 .price-text {
   font-size: 1.6rem;
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-family: monospace;
   font-weight: 700;
-  color: #4ade80; 
+  color: #4ade80;
   margin: 0;
-  letter-spacing: -0.02em;
 }
 
 .timestamp {
   font-size: 0.75rem;
   color: #475569;
   margin-top: 4px;
-  font-weight: 500;
-}
-
-@media (max-width: 600px) {
-  .crypto-card {
-    padding: 1rem;
-  }
-  .price-text {
-    font-size: 1.3rem;
-  }
-  .header-title {
-    font-size: 1.8rem;
-  }
 }
