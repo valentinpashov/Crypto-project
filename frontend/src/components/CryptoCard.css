@@ -1,0 +1,73 @@
+.crypto-card {
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 1.25rem 1.5rem;
+  border-radius: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  margin-bottom: 0.5rem;
+}
+
+.crypto-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(59, 130, 246, 0.5);
+  background: rgba(30, 41, 59, 0.9);
+}
+
+.coin-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 150px;
+}
+
+.coin-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  color: white;
+}
+
+.coin-name {
+  font-size: 1rem;
+  margin: 0;
+  color: #f8fafc;
+}
+
+.coin-symbol {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.chart-wrapper {
+  flex: 1;
+  max-width: 200px;
+  margin: 0 20px;
+}
+
+.price-section {
+  text-align: right;
+  min-width: 120px;
+}
+
+.price-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #4ade80;
+  margin: 0;
+}
+
+.timestamp {
+  font-size: 0.7rem;
+  color: #475569;
+}
