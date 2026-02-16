@@ -15,7 +15,7 @@
 
 header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .header-title {
@@ -39,6 +39,7 @@ header {
   color: #94a3b8;
   font-size: 0.85rem;
   font-weight: 500;
+  margin-top: 1rem;
 }
 
 .pulse-dot {
@@ -67,99 +68,6 @@ header {
 .crypto-grid {
   display: grid;
   gap: 1.25rem;
-}
-
-.crypto-card {
-  background: rgba(30, 41, 59, 0.7);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  padding: 1.5rem;
-  border-radius: 1.25rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.crypto-card:hover {
-  background: rgba(30, 41, 59, 0.9);
-  border-color: rgba(59, 130, 246, 0.5);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
-}
-
-.coin-info {
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-}
-
-.coin-icon {
-  width: 48px;
-  height: 48px;
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-  border-radius: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 1.25rem;
-}
-
-.coin-name {
-  font-weight: 700;
-  font-size: 1.1rem;
-  margin: 0;
-}
-
-.coin-symbol {
-  color: #64748b;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-}
-
-.price-text {
-  font-size: 1.6rem;
-  font-family: monospace;
-  font-weight: 700;
-  color: #4ade80;
-  margin: 0;
-}
-
-.timestamp {
-  font-size: 0.75rem;
-  color: #475569;
-  margin-top: 4px;
-}
-
-.search-container {
-  margin-bottom: 1.5rem;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.search-input {
-  width: 100%;
-  padding: 14px 24px;
-  background: rgba(30, 41, 59, 0.5);
-  border: 1px solid rgba(59, 130, 246, 0.3);
-  border-radius: 16px;
-  color: white;
-  font-size: 1rem;
-  outline: none;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-}
-
-.search-input:focus {
-  border-color: #3b82f6;
-  background: rgba(30, 41, 59, 0.8);
-  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
-}
-
-.search-input::placeholder {
-  color: #64748b;
 }
 
 .no-results {
