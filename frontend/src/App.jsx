@@ -1,47 +1,54 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import NewsTicker from './components/NewsTicker';
 import './App.css';
+import NewsTicker from "./components/NewsTicker.jsx";
+import SearchBar from "./components/SearchBar.jsx";
+import CryptoCard from "./components/CryptoCard.jsx";
 
 function App() {
   const [prices, setPrices] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(""); 
+  const [searchTerm, setSearchTerm] = useState("");
 
   useEffect(() => {
     const fetchData = () => {
       axios.get('http://localhost:8080/api/prices')
         .then(res => {
-          const uniqueCoins = [];
-          const seenSymbols = new Set();
-          const dataReversed = [...res.data].reverse();
+          const groupedData = {};
 
-          for (const item of dataReversed) {
+          res.data.forEach(item => {
             const symbol = item.asset.symbol;
-
-            if (!seenSymbols.has(symbol)) {
-              seenSymbols.add(symbol);
-              uniqueCoins.push(item);
+            if (!groupedData[symbol]) {
+              groupedData[symbol] = {
+                asset: item.asset,
+                history: []
+              };
             }
+            groupedData[symbol].history.push({ 
+                price: item.price,
+                timestamp: item.timestamp 
+            });
+          });
 
-            if (uniqueCoins.length === 10) break;
-          }
+          const finalData = Object.values(groupedData)
+            .map(coin => ({
+              ...coin,
+              chartData: coin.history.slice(-20),
+              currentPrice: coin.history[coin.history.length - 1].price,
+              lastUpdate: coin.history[coin.history.length - 1].timestamp
+            }))
+            .sort((a, b) => a.asset.id - b.asset.id);
 
-          const sortedByOriginalOrder = uniqueCoins.sort((a, b) => a.asset.id - b.asset.id);
-
-          setPrices(sortedByOriginalOrder);
+          setPrices(finalData);
         })
-        .catch(err => console.error("Error:", err));
+        .catch(err => console.error("Backend connection error:", err));
     };
 
     fetchData();
-
-    // automatic refresh every 10 seconds
     const interval = setInterval(fetchData, 10000);
-
+    
     return () => clearInterval(interval);
   }, []);
 
-  // Filter logic 
   const filteredPrices = prices.filter(coin => 
     coin.asset.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
     coin.asset.symbol.toLowerCase().includes(searchTerm.toLowerCase())
@@ -55,40 +62,20 @@ function App() {
         <header>
           <h1 className="header-title"> CRYPTO<span>TRACKER</span> </h1>
           
-          <div className="search-container">
-            <input 
-              type="text" 
-              placeholder="Search by name or symbol (e.g. BTC)..." 
-              className="search-input"
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
+          <SearchBar onSearch={setSearchTerm} />
 
           <div className="update-status"> <span className="pulse-dot"></span> Live Market Updates </div>
         </header>
 
-        <div className="crypto-grid">
+        <main className="crypto-grid">
           {filteredPrices.length > 0 ? (
             filteredPrices.map((coin) => (
-              <div key={coin.id} className="crypto-card">
-                <div className="coin-info">
-                  <div className="coin-icon">{coin.asset.symbol[0]}</div>
-                  <div>
-                    <h3 className="coin-name">{coin.asset.name}</h3>
-                    <p className="coin-symbol">{coin.asset.symbol}</p>
-                  </div>
-                </div>
-                
-                <div className="price-section">
-                  <p className="price-text"> ${coin.price.toLocaleString(undefined, { minimumFractionDigits: 2 })} </p>
-                  <p className="timestamp"> Last Update: {new Date(coin.timestamp).toLocaleTimeString()} </p>
-                </div>
-              </div>
+              <CryptoCard key={coin.asset.id} coin={coin} />
             ))
           ) : (
-            <div className="no-results">No cryptocurrencies found matching "{searchTerm}"</div>
+            <div className="no-results"> No assets found matching "{searchTerm}" </div>
           )}
-        </div>
+        </main>
       </div>
     </div>
   );
