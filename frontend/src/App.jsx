@@ -4,6 +4,7 @@ import './App.css';
 import NewsTicker from "./components/NewsTicker.jsx";
 import SearchBar from "./components/SearchBar.jsx";
 import CryptoCard from "./components/CryptoCard.jsx";
+import Footer from "./components/Footer.jsx";
 
 function App() {
   const [prices, setPrices] = useState([]);
@@ -77,6 +78,7 @@ function App() {
           )}
         </main>
       </div>
+      <Footer />
     </div>
   );
 }
