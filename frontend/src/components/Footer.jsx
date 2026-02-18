@@ -28,7 +28,9 @@ const Footer = () => {
         </div>
       </div>
       
-
+      <div className="footer-bottom">
+        <p>&copy; {new Date().getFullYear()} CryptoTracker. Built with ❤️ for the Crypto Community.</p>
+      </div>
     </footer>
   );
 };
