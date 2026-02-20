@@ -135,3 +135,21 @@
   height: 40px;
   line-height: 40px;
 }
+
+.ticker-container {
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 15px 0;
+}
+
+.ticker-item {
+  color: #94a3b8;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.ticker-icon {
+  color: #f59e0b; 
+  filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.5));
+}
