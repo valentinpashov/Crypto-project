@@ -9,6 +9,24 @@ import Footer from "./components/Footer.jsx";
 function App() {
   const [prices, setPrices] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  
+  // LocalStorage safety for favorites
+  const [favorites, setFavorites] = useState(() => {
+    const savedFavs = localStorage.getItem('cryptoFavorites');
+    return savedFavs ? JSON.parse(savedFavs) : [];
+  });
+
+  // function to toggle favorites and sync with localStorage
+  const toggleFavorite = (symbol) => {
+    setFavorites(prevFavorites => {
+      const updatedFavorites = prevFavorites.includes(symbol)
+        ? prevFavorites.filter(fav => fav !== symbol)
+        : [...prevFavorites, symbol];
+      
+      localStorage.setItem('cryptoFavorites', JSON.stringify(updatedFavorites));
+      return updatedFavorites;
+    });
+  };
 
   useEffect(() => {
     const fetchData = () => {
@@ -36,8 +54,7 @@ function App() {
               chartData: coin.history.slice(-20),
               currentPrice: coin.history[coin.history.length - 1].price,
               lastUpdate: coin.history[coin.history.length - 1].timestamp
-            }))
-            .sort((a, b) => a.asset.id - b.asset.id);
+            }));
 
           setPrices(finalData);
         })
@@ -50,10 +67,21 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-  const filteredPrices = prices.filter(coin => 
-    coin.asset.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    coin.asset.symbol.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Favorites are always on top
+  const sortedAndFilteredPrices = prices
+    .filter(coin => 
+      coin.asset.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      coin.asset.symbol.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .sort((a, b) => {
+      const aFav = favorites.includes(a.asset.symbol);
+      const bFav = favorites.includes(b.asset.symbol);
+      
+      if (aFav && !bFav) return -1;
+      if (!aFav && bFav) return 1;
+      
+      return a.asset.id - b.asset.id;
+    });
 
   return (
     <div className="dashboard-container">
@@ -69,9 +97,14 @@ function App() {
         </header>
 
         <main className="crypto-grid">
-          {filteredPrices.length > 0 ? (
-            filteredPrices.map((coin) => (
-              <CryptoCard key={coin.asset.id} coin={coin} />
+          {sortedAndFilteredPrices.length > 0 ? (
+            sortedAndFilteredPrices.map((coin) => (
+              <CryptoCard 
+                key={coin.asset.id} 
+                coin={coin} 
+                isFavorite={favorites.includes(coin.asset.symbol)}
+                onToggleFavorite={() => toggleFavorite(coin.asset.symbol)}
+              />
             ))
           ) : (
             <div className="no-results"> No assets found matching "{searchTerm}" </div>
