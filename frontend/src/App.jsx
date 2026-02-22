@@ -9,6 +9,7 @@ import Footer from "./components/Footer.jsx";
 function App() {
   const [prices, setPrices] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [sortOrder, setSortOrder] = useState("default");
   
   // LocalStorage safety for favorites
   const [favorites, setFavorites] = useState(() => {
@@ -80,6 +81,12 @@ function App() {
       if (aFav && !bFav) return -1;
       if (!aFav && bFav) return 1;
       
+      if (sortOrder === "price_desc") {
+        return b.currentPrice - a.currentPrice; 
+      } else if (sortOrder === "price_asc") {
+        return a.currentPrice - b.currentPrice; 
+      }
+      
       return a.asset.id - b.asset.id;
     });
 
@@ -91,7 +98,11 @@ function App() {
         <header>
           <h1 className="header-title"> CRYPTO<span>TRACKER</span> </h1>
           
-          <SearchBar onSearch={setSearchTerm} />
+          <SearchBar 
+            onSearch={setSearchTerm} 
+            onSortChange={setSortOrder} 
+            currentSort={sortOrder} 
+          />
 
           <div className="update-status"> <span className="pulse-dot"></span> Live Market Updates </div>
         </header>
