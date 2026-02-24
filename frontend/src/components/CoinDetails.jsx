@@ -35,7 +35,24 @@ const CoinDetails = ({ prices }) => {
         </div>
       </div>
 
-
+      <div className="stats-grid">
+        <div className="stat-card">
+          <div className="stat-label">Current Price</div>
+          <div className="stat-value" style={{color: '#22d3ee'}}>{formatCurrency(coin.currentPrice)}</div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-label">Market Cap</div>
+          <div className="stat-value">{formatCurrency(mockStats.marketCap)}</div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-label">24h Volume</div>
+          <div className="stat-value">{formatCurrency(mockStats.volume)}</div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-label">Circulating Supply</div>
+          <div className="stat-value">{mockStats.supply.toLocaleString()} {coin.asset.symbol}</div>
+        </div>
+      </div>
 
       <div className="main-chart-wrapper">
         <h3 style={{marginBottom: '20px', color: '#cbd5e1'}}>Price Movement (Live)</h3>
