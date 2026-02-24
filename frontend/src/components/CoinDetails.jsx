@@ -37,7 +37,7 @@ const CoinDetails = ({ prices }) => {
 
 
 
-      
+      <div className="main-chart-wrapper">
         <h3 style={{marginBottom: '20px', color: '#cbd5e1'}}>Price Movement (Live)</h3>
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={coin.chartData}>
@@ -66,7 +66,7 @@ const CoinDetails = ({ prices }) => {
           </AreaChart>
         </ResponsiveContainer>
       </div>
-    
+    </div>
   );
 };
 
