@@ -44,7 +44,7 @@ function App() {
           const finalData = Object.values(groupedData)
             .map(coin => ({
               ...coin,
- 
+              chartData: coin.history.slice(-50), 
               currentPrice: coin.history[coin.history.length - 1].price,
               lastUpdate: coin.history[coin.history.length - 1].timestamp
             }));
