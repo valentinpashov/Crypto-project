@@ -20,16 +20,15 @@ const Footer = () => {
         </div>
 
         <div className="footer-section">
-          <h4>Connect</h4>
+          <h4>Links</h4>
           <ul className="footer-links">
             <li><a href="https://github.com/valentinpashov" target="_blank" rel="noreferrer">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/in/valentin-pashov-122586304/" target="_blank" rel="noreferrer">LinkedIn</a></li>
           </ul>
         </div>
       </div>
       
       <div className="footer-bottom">
-        <p>&copy; {new Date().getFullYear()} CryptoTracker. Built with ❤️ for the Crypto Community.</p>
+        <p>&copy; {new Date().getFullYear()} CryptoTracker. Built for the Crypto Community.</p>
       </div>
     </footer>
   );
