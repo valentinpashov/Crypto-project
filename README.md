@@ -1,6 +1,6 @@
 # CryptoTracker Full-Stack Application
 
-A comprehensive full-stack solution for monitoring real-time cryptocurrency market data. This project integrates a robust **Java Spring Boot** backend with a high-performance **React** frontend to deliver live price updates for the top market assets.
+A comprehensive full-stack solution for monitoring real-time cryptocurrency market data. This project integrates a robust Java Spring Boot backend with a high-performance React frontend to deliver live price updates for the top market assets.
 
 ## 🗄️ Database Schema & Logic
 The project uses a relational database model to maintain data integrity and track price changes over time.
@@ -17,13 +17,19 @@ The project uses a relational database model to maintain data integrity and trac
 * **PostgreSQL** for reliable, ACID-compliant data storage.
 
 ### Frontend
-* **React** 
-* **Axios** for smooth asynchronous API communication.
+* **React**
+* **React Router DOM**
+* **Recharts**
+* **Axios** 
 * **Custom CSS** for a lightweight, modular, and fully responsive UI.
 
 ## 🚀 Key Features
 * **Self-Populating Database** 
-* **Live Dashboard** 
+* **Live Market Dashboard:**
+* **Dedicated Coin Pages**
+* **Interactive Data Visualization**
+* **Filtering & Sorting**
+* **Global Crypto News**
 * **Enterprise-Ready Architecture**
 
 ## 📂 Project Structure
