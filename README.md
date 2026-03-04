@@ -2,7 +2,7 @@
 
 A comprehensive full-stack solution for monitoring real-time cryptocurrency market data. This project integrates a robust Java Spring Boot backend with a high-performance React frontend to deliver live price updates for the top market assets.
 
-## 🗄️ Database Schema & Logic
+## Database Schema & Logic
 The project uses a relational database model to maintain data integrity and track price changes over time.
 
 ### Key Components:
@@ -44,7 +44,7 @@ MyCryptoProject/
 └── README.md          
 ```
 
-## 🛠️ Installation & Setup
+## Installation & Setup
 1. Database Configuration
 Create a PostgreSQL database named crypto_db.
 ```
