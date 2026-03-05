@@ -7,7 +7,7 @@ The project uses a relational database model to maintain data integrity and trac
 
 ### Key Components:
 * **Assets Table**: Stores metadata for cryptocurrencies, including full names and symbols.
-* **Prices Table**: Stores time-series data, linking live prices and timestamps to specific assets.
+* **Prices Table**: Stores time-series data, linking live prices and timestamps.
 * **Automated Data Flow**
 
 ## 🛠️ Tech Stack
@@ -21,7 +21,7 @@ The project uses a relational database model to maintain data integrity and trac
 * **React Router DOM**
 * **Recharts**
 * **Axios** 
-* **Custom CSS** for a lightweight, modular, and fully responsive UI.
+* **Custom CSS** 
 
 ## 🚀 Key Features
 * **Self-Populating Database** 
